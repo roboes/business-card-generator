@@ -29,7 +29,7 @@ Two Microsoft Word (.docx) templates are provided:
 ## Python dependencies
 
 ```.ps1
-python -m pip install docx-mailmerge lxml pandas
+python -m pip install docx-mailmerge pandas
 ```
 
 ## Functions
