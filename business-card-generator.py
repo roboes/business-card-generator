@@ -43,7 +43,7 @@ def split_dataframe(*, df, chunk_size=10):
         chunks[i] = chunks[i].reset_index(level=0, drop=False)
         chunks[i] = chunks[i].rename(columns={'index': 'merge_field'})
         chunks[i]['merge_field'] = chunks[i]['merge_field'].astype(dtype='str')
-        chunks[i]['merge_field'] = chunks[i]['merge_field'].str.replace(pat=r'^(.*)$', repl=r'guest_\1', regex=True)
+        chunks[i]['merge_field'] = chunks[i]['merge_field'].replace(to_replace=r'^(.*)$', value=r'guest_\1', regex=True)
 
     return chunks
 
