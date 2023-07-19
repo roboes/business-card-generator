@@ -1,5 +1,5 @@
 ## Business Card Generator
-# Last update: 2023-05-24
+# Last update: 2023-07-19
 
 
 """About: Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word Template using Mail Merge library in Python."""
@@ -14,15 +14,17 @@ globals().clear()
 
 
 # Import packages
-# from natsort import natsorted
 import os
 
-# import openpyxl
-import pandas as pd
 from mailmerge import MailMerge
 
+# from natsort import natsorted
+# import openpyxl
+import pandas as pd
+
+
 # Set working directory
-os.chdir(path=os.path.join(os.path.expanduser('~'), 'Downloads'))
+# os.chdir(path=os.path.join(os.path.expanduser('~'), 'Downloads'))
 
 
 ###########
@@ -52,8 +54,13 @@ def split_dataframe(*, df, chunk_size=10):
     return chunks
 
 
-def business_card_generator(*, df, template, output='template_output.docx'):
-    """Generate the business card."""
+def business_card_generator(
+    *,
+    df,
+    template,
+    directory,
+    file_name='template_output.docx',
+):
     # Import template
     document = MailMerge(template)
 
@@ -77,7 +84,7 @@ def business_card_generator(*, df, template, output='template_output.docx'):
         replacements=df_list.values(),
         separator='continuous_section',
     )
-    document.write(file=output)
+    document.write(file=os.path.join(directory, file_name))
     document.close()
 
 
@@ -123,6 +130,13 @@ df = df.sort_values(by=['name'], ignore_index=True)
 # Fill/populate Merge Fields from a Microsoft Word file (.docx) from a given DataFrame
 business_card_generator(
     df=df,
-    template='templates/wedding_business_card_template.docx',
-    output='wedding_business_card_template_output.docx',
+    template=os.path.join(
+        os.path.expanduser('~'),
+        'Downloads',
+        'business-card-generator',
+        'templates',
+        'wedding_business_card_template.docx',
+    ),
+    directory=os.path.join(os.path.expanduser('~'), 'Downloads'),
+    file_name='wedding_business_card_template_output.docx',
 )
