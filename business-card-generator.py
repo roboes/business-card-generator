@@ -1,5 +1,5 @@
 ## Business Card Generator
-# Last update: 2023-07-19
+# Last update: 2023-09-01
 
 
 """About: Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word Template using Mail Merge library in Python."""
@@ -14,6 +14,7 @@ globals().clear()
 
 
 # Import packages
+# from io import BytesIO
 import os
 
 from mailmerge import MailMerge
@@ -58,7 +59,7 @@ def business_card_generator(
     *,
     df,
     template,
-    directory,
+    output_directory,
     file_name='template_output.docx',
 ):
     # Import template
@@ -73,7 +74,7 @@ def business_card_generator(
     # Split DataFrame
     df = split_dataframe(df=df, chunk_size=10)
 
-    # Create dictionary object
+    # Create dict object
     df_list = {}
 
     for i in range(len(df)):
@@ -84,7 +85,7 @@ def business_card_generator(
         replacements=df_list.values(),
         separator='continuous_section',
     )
-    document.write(file=os.path.join(directory, file_name))
+    document.write(file=os.path.join(output_directory, file_name))
     document.close()
 
 
@@ -120,7 +121,7 @@ df = pd.DataFrame(
 )
 
 # # Import Excel file with names
-# df = (pd.read_excel(io='Names.xlsx', sheet_name='List', header=0, index_col=None, skiprows=0, skipfooter=0, dtype=None, engine='openpyxl')
+# df = (pd.read_excel(io=BytesIO('Names.xlsx'), sheet_name='List', header=0, index_col=None, skiprows=0, skipfooter=0, dtype=None, engine='openpyxl')
 #    .filter(items=['name']))
 
 # Rearrange rows
@@ -137,6 +138,6 @@ business_card_generator(
         'templates',
         'wedding_business_card_template.docx',
     ),
-    directory=os.path.join(os.path.expanduser('~'), 'Downloads'),
+    output_directory=os.path.join(os.path.expanduser('~'), 'Downloads'),
     file_name='wedding_business_card_template_output.docx',
 )

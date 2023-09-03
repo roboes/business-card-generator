@@ -1,0 +1,2 @@
+mailmerge==2.2.3
+pandas==2.1.0
