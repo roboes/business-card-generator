@@ -1,8 +1,8 @@
 ## Business Card Generator
-# Last update: 2023-09-01
+# Last update: 2023-11-02
 
 
-"""About: Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word Template using Mail Merge library in Python."""
+"""About: Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word template using Mail Merge library in Python."""
 
 
 ###############
@@ -14,7 +14,6 @@ globals().clear()
 
 
 # Import packages
-# from io import BytesIO
 import os
 
 from mailmerge import MailMerge
@@ -80,7 +79,7 @@ def business_card_generator(
     for i in range(len(df)):
         df_list[i] = dict(zip(df[i]['merge_field'], df[i]['name']))
 
-    # Fill Word Template file
+    # Fill Microsoft Word template file
     document.merge_templates(
         replacements=df_list.values(),
         separator='continuous_section',
@@ -121,7 +120,7 @@ df = pd.DataFrame(
 )
 
 # # Import Excel file with names
-# df = (pd.read_excel(io=BytesIO('Names.xlsx'), sheet_name='List', header=0, index_col=None, skiprows=0, skipfooter=0, dtype=None, engine='openpyxl')
+# df = (pd.read_excel(io='Names.xlsx', sheet_name='List', header=0, index_col=None, skiprows=0, skipfooter=0, dtype=None, engine='openpyxl')
 #    .filter(items=['name']))
 
 # Rearrange rows
