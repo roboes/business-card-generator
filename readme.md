@@ -14,13 +14,13 @@ Two Microsoft Word (.docx) templates are provided:
 1. [Simple Business Card Template](templates/simple_business_card_template.docx)
 
 <p align="center">
-<img src="examples/simple_business_card_template_output.png" alt="Output" width=510 high=720>
+<img src="./media/simple-business-card-template-output.png" alt="Output" width=510 high=720>
 </p>
 
 2. [Wedding Business Card Template](templates/wedding_business_card_template.docx) (required font: [Angella White Font](https://www.dafont.com/angella-white.font)).
 
 <p align="center">
-<img src="examples/wedding_business_card_template_output.png" alt="Output" width=510 high=720>
+<img src="./media/wedding-business-card-template-output.png" alt="Output" width=510 high=720>
 </p>
 
 
