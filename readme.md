@@ -5,12 +5,14 @@
 ## Description
 
 This tool aims to fill variables (of a given dataset input) into Merge Fields of a Microsoft Word template using Mail Merge library in Python. The main features are:
+
 - Fill/populate Merge Fields from a Microsoft Word file (.docx) from a given dataset (an example is provided in the [business-card-generator.py](business-card-generator.py) code).
 - In case of more than 10 rows are contained in the input dataset, the template is replicated into multiple pages.
 
 ## Output
 
 Two Microsoft Word (.docx) templates are provided:
+
 1. [Simple Business Card Template](templates/simple_business_card_template.docx)
 
 <p align="center">
@@ -23,7 +25,6 @@ Two Microsoft Word (.docx) templates are provided:
 <img src="./media/wedding-business-card-template-output.png" alt="Output" width=510 high=720>
 </p>
 
-
 # Usage
 
 ## Python dependencies
@@ -35,14 +36,17 @@ python -m pip install docx-mailmerge openpyxl pandas
 ## Functions
 
 ### business_card_generator
+
 ```.py
 business_card_generator(df, template, output_name)
 ```
 
 #### Description
+
 - Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word template.
 
 #### Parameters
-- `df`: *DataFrame*. The DataFrame should include a *name* column, with the names that will be inserted to the Word template file.
-- `template`: *str, path object or file-like object*. Word template input file.
-- `output_name`: *str, path object or file-like object*. Output of the transformed Word template input file.
+
+- `df`: _DataFrame_. The DataFrame should include a _name_ column, with the names that will be inserted to the Word template file.
+- `template`: _str, path object or file-like object_. Word template input file.
+- `output_name`: _str, path object or file-like object_. Output of the transformed Word template input file.
