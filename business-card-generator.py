@@ -1,5 +1,5 @@
 ## Business Card Generator
-# Last update: 2023-11-02
+# Last update: 2025-01-07
 
 
 """About: Fill variables (of a given dataset input) into Merge Fields of a Microsoft Word template using Mail Merge library in Python."""
@@ -92,57 +92,3 @@ def business_card_generator(
     )
     document.write(file=os.path.join(output_directory, file_name))
     document.close()
-
-
-#########################
-# Business Card Generator
-#########################
-
-# Create example DataFrame with names
-df = pd.DataFrame(
-    data=[
-        ['Tom'],
-        ['Jones'],
-        ['Krystal'],
-        ['Albert'],
-        ['Paloma'],
-        ['Shania'],
-        ['Max'],
-        ['Steve'],
-        ['Paul'],
-        ['Patrick'],
-        ['Lucia'],
-        ['Rachel'],
-        ['Ray'],
-        ['Jessica'],
-        ['Julianna'],
-        ['Lucille'],
-        ['Leandro'],
-        ['Vincent'],
-    ],
-    index=None,
-    columns=['name'],
-    dtype=None,
-)
-
-# # Import Excel file with names
-# df = (pd.read_excel(io='Names.xlsx', sheet_name='List', header=0, index_col=None, skiprows=0, skipfooter=0, dtype=None, engine='openpyxl')
-#    .filter(items=['name']))
-
-# Rearrange rows
-df = df.sort_values(by=['name'], ignore_index=True)
-
-
-# Fill/populate Merge Fields from a Microsoft Word file (.docx) from a given DataFrame
-business_card_generator(
-    df=df,
-    template=os.path.join(
-        os.path.expanduser('~'),
-        'Downloads',
-        'business-card-generator',
-        'templates',
-        'wedding_business_card_template.docx',
-    ),
-    output_directory=os.path.join(os.path.expanduser('~'), 'Downloads'),
-    file_name='wedding_business_card_template_output.docx',
-)
