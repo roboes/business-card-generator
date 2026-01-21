@@ -23,16 +23,6 @@ from mailmerge import MailMerge
 import pandas as pd
 
 
-# Settings
-
-## Set working directory
-# os.chdir(path=os.path.join(os.path.expanduser('~'), 'Downloads'))
-
-## Copy-on-Write (will be enabled by default in version 3.0)
-if pd.__version__ >= '1.5.0' and pd.__version__ < '3.0.0':
-    pd.options.mode.copy_on_write = True
-
-
 ###########
 # Functions
 ###########
@@ -60,13 +50,7 @@ def split_dataframe(*, df, chunk_size=10):
     return chunks
 
 
-def business_card_generator(
-    *,
-    df,
-    template,
-    output_directory,
-    file_name='template_output.docx',
-):
+def business_card_generator(*, df, template, output_directory, file_name='template_output.docx'):
     # Import template
     document = MailMerge(template)
 
