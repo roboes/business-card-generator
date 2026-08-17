@@ -16,12 +16,10 @@ globals().clear()
 # Import packages
 import os
 
-from mailmerge import MailMerge
-
 # from natsort import natsorted
 # import openpyxl
 import pandas as pd
-
+from mailmerge import MailMerge
 
 ###########
 # Functions

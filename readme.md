@@ -27,7 +27,7 @@ Two Microsoft Word (.docx) templates are provided:
 
 ### Python dependencies
 
-```.ps1
+```ps1
 python -m pip install docx-mailmerge openpyxl pandas
 ```
 
@@ -35,7 +35,7 @@ python -m pip install docx-mailmerge openpyxl pandas
 
 #### `business_card_generator`
 
-```.py
+```py
 business_card_generator(df, template, output_name)
 ```
 
@@ -51,7 +51,7 @@ business_card_generator(df, template, output_name)
 
 ### Code Workflow Example
 
-```.py
+```py
 # Create example DataFrame with names
 df = pd.DataFrame(
     data=[
